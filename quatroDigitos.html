@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Quatro Digitos</title>
+    <script>
+        let numeroAleatorio = Math.random() * 10000;
+        numeroAleatorio = Math.floor(numeroAleatorio);
+        numeroAleatorio += 1000;
+
+        console.log(numeroAleatorio);
+
+        function submissaoJogo() {
+            var numJogo = parseInt(document.getElementById('input').value);
+            var divRet = document.getElementById('divRetorno');
+
+            if (numeroAleatorio == numJogo) {
+                divRet.style = "margin-top: 30px; font-weight: 600; color: green!important;"
+                divRet.innerHTML = "Parabéns!!! Você ganhou."
+            } else
+
+                var diferenca = numeroAleatorio - numJogo;
+
+            if (diferenca < 0) {
+                diferenca = diferenca * -1
+
+                if (diferenca > 20) {
+                    msg = "O número correto é muito menor que o informado."
+                    divRet.innerHTML = "Você errou. Tente novamente. " + msg
+                    divRet.style = "margin-top: 30px; font-weight: 600; color: red!important;"
+                } else
+                    msg = "O número correto é menor que o informado."
+                divRet.innerHTML = "Você errou. Tente novamente. " + msg
+                divRet.style = "margin-top: 30px; font-weight: 600; color: red!important;"
+            } else
+
+                if (diferenca > 20) {
+                    msg = "O número correto é muito maior que o informado."
+                    divRet.innerHTML = "Você errou. Tente novamente. " + msg
+                    divRet.style = "margin-top: 30px; font-weight: 600; color: red!important;"
+                } else if (diferenca < 20) {
+                    msg = "O número correto é maior que o informado."
+                    divRet.innerHTML = "Você errou. Tente novamente. " + msg
+                    divRet.style = "margin-top: 30px; font-weight: 600; color: red!important;"
+                }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <center>
+        <h1>JOGO DOS QUATRO DIGITOS</h1>
+    </center>
+
+    <center>
+        <p>Olá! Este site é um jogo onde você deve adivinhar o número secreto.<br><br>Ao entrar nesse site foi definido
+            um
+            número secreto entre 1000 e 9999, e você deve
+            adivinha-lo. A cada tentativa uma nova dica te aproximará do valor final!</p>
+    </center>
+
+    <center><input id="input" min="1000" max="9999" type="number" name="tentativa" value=""></center>
+    <center><button onclick="submissaoJogo()">Submeter</button></center>
+
+    <div id="divRetorno"></div>
+</body>
+
+
+<center>
+    <footer>
+        <a href="./zero_a_cem.html">Entre aqui no outro jogo.</a>
+    </footer>
+</center>
+
+</html>
